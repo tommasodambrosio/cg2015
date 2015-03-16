@@ -96,29 +96,31 @@
 (function() {
 // Write your code here  
   
-  function MusicBox(){
+  	function MusicBox(){
     this.box=[];
-  }
+  	}
   
-  function Album(artist,song){
-    this.artist=artist;
-    this.song=song;
-  }
-  function MusicBox(){
-    Album.call(this);
-    this.box=[];
-  }
-  MusicBox.prototype.addAlbum = function(album){
-return this.box.push(album);
-  }
+  	function Album(artist,song){
+    		this.artist=artist;
+    		this.song=song;
+  	}
+  	function MusicBox(){
+    	this.m_box=[];
+  	}
+  
+  	MusicBox.prototype.addAlbum = function(album){
+	return this.box.push(album);
+  	}
 
-  Album.prototype.play = function(){
+  	Album.prototype.play = function(){
      console.log("Playing "+this.artist+this.song);
-  }
+  	}
 
-  MusicBox.prototype.favoriteAlbum = function(){
+  	MusicBox.prototype.favoriteAlbum = function(){
     return "The Who - Tommy";
-  }
+  	}
+  
+
   var box = new MusicBox();
   var a1 = new Album("The Who", "Tommy");
   var a2 = new Album("Tom Waits", "Closing Time");
@@ -144,27 +146,29 @@ return this.box.push(album);
 // Write your code here  
   
   function MusicBox(){
-    this.box=[];
+    this.box_array=[];
   }
   
   function Album(artist,song){
     this.artist=artist;
     this.song=song;
   }
-  function MusicBox(){
-    Album.call(this);
-    this.box=[];
-  }
-MusicBox.prototype.addAlbum = function (){
-  arguments.forEach( function(album){this.box.push(album)} );
-}
-  Album.prototype.play = function(){
-     console.log("Playing "+this.artist+this.song);
-  }
+	
 
-  MusicBox.prototype.favoriteAlbum = function(){
+	MusicBox.prototype.addAlbum = function (){
+		for (var i=0;i<arguments.length;i++)
+		{
+		this.box_array.push(arguments[i]);
+		}
+	}
+  	
+  	Album.prototype.play = function(){
+     console.log("Playing "+this.artist+this.song);
+  	}
+
+  	MusicBox.prototype.favoriteAlbum = function(){
     return "The Who - Tommy";
-  }
+  	}
   var box = new MusicBox();
   var a1 = new Album("The Who", "Tommy");
   var a2 = new Album("Tom Waits", "Closing Time");
@@ -179,10 +183,14 @@ MusicBox.prototype.addAlbum = function (){
   a2.play(); // prints "Playing Tom Waits - Closing Time"  
   a1.play(); // prints "Playing The Who - Tommy"
 
-  favorite = box.favoriteAlbum(); 
+	MusicBox.prototype.addAlbum = function(){
+	for(var i = 0; i< arguments.length; i++)
+		this.playlist.push(arguments[i]);
+	}
+  favorite = box.favouriteAlbum(); 
 
-  // prints "favorite album is The Who - Tommy"
-  console.log("favorite album is " + favorite); 
+  // prints "favourite album is The Who - Tommy"
+  console.log("favourite album is " + favorite); 
 }());
 
 /*exercise 07*/
